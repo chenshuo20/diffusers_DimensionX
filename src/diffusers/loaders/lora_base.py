@@ -449,6 +449,8 @@ class LoraBaseMixin:
             raise ValueError("`components` cannot be an empty list.")
 
         for fuse_component in components:
+            if fuse_component == 'text_encoder':
+                continue
             if fuse_component not in self._lora_loadable_modules:
                 raise ValueError(f"{fuse_component} is not found in {self._lora_loadable_modules=}.")
 
